@@ -32,11 +32,11 @@ func TestParseData(t *testing.T) {
 	if dataPoints[0].DayOfWeek != "Mi" {
 		t.Errorf("parseData() DayOfWeek = %v, want %v", dataPoints[0].DayOfWeek, "Mi")
 	}
-	if dataPoints[0].Timestamp.Format("2.1.2006-15:04") != "1.1.2025-01:35" {
-		t.Errorf("parseData() Date = %v, want %v", dataPoints[0].Timestamp.Format("2.1.2006"), "1.1.2025")
+	if dataPoints[0].Timestamp.Format("2.1.2006-15:04") != "1.1.2025-00:35" {
+		t.Errorf("parseData() Date = %v, want %v", dataPoints[0].Timestamp.Format("2.1.2006-15:04"), "1.1.2025-00:35")
 	}
-	if dataPoints[1].Timestamp.Format("2.1.2006-15:04") != "11.12.2025-08:30" {
-		t.Errorf("parseData() Date = %v, want %v", dataPoints[0].Timestamp.Format("2.1.2006"), "11.12.2025")
+	if dataPoints[1].Timestamp.Format("2.1.2006-15:04") != "11.12.2025-07:30" {
+		t.Errorf("parseData() Date = %v, want %v", dataPoints[1].Timestamp.Format("2.1.2006-15:04"), "11.12.2025-07:30")
 	}
 	if fmt.Sprintf("%.2f", dataPoints[0].Height) != "6.73" {
 		t.Errorf("parseData() Height = %v, want %v", fmt.Sprintf("%.2f", dataPoints[0].Height), "6.73")
@@ -55,6 +55,18 @@ func TestParseData(t *testing.T) {
 	}
 	if dataPoints[1].TransitNumber != 26466 {
 		t.Errorf("parseData() TransitNumber = %v, want %v", dataPoints[1].TransitNumber, 26466)
+	}
+	if dataPoints[0].Transit != 1 {
+		t.Errorf("parseData() Transit = %v, want %v", dataPoints[0].Transit, 1)
+	}
+	if dataPoints[1].Transit != 2 {
+		t.Errorf("parseData() Transit = %v, want %v", dataPoints[1].Transit, 2)
+	}
+	if fmt.Sprintf("%.6f", dataPoints[0].JulianDate) != "2460676.524368" {
+		t.Errorf("parseData() JulianDate = %v, want %v", fmt.Sprintf("%.6f", dataPoints[0].JulianDate), "2460676.524368")
+	}
+	if fmt.Sprintf("%.6f", dataPoints[1].JulianDate) != "2460676.812754" {
+		t.Errorf("parseData() JulianDate = %v, want %v", fmt.Sprintf("%.6f", dataPoints[1].JulianDate), "2460676.812754")
 	}
 
 }
