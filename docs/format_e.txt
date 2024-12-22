@@ -1,0 +1,141 @@
+    Bundesamt für Seeschifffahrt und Hydrographie, Hamburg            30.10.2023
+    Sachgebiet: M11 Gezeiten
+
+                     Beschreibung des BSH E-Format
+                    ===============================
+
+********************************************************************************
+
+    Kopfzeilen:
+    ------------
+
+    I_E DE__508P2019 Beginn eines Datensatzes im E-Format  +BSH-Pegelnummer+Jahr
+    A02 Daten-Art  : Vorausberechnungen oder Beobachtungen
+    A03 PegelNr.   : Pegelnummer des BSH
+    A04 GT-Name    : Pegelname des BSH
+    A06 GT-Jahr    : Jahr der Gültigkeit
+    A07 Def.-Jahr  : Verwendete Wasserstandsbeobachtungen - methodisch gewähltes
+                     letztes Jahr und ggf. Gesamtzeitraum in Jahren
+    A08 Position   : geographische Koordinaten, Bezugssystem: ED50, WGS84
+    A11 Zeitzone   : gesetzliche Zeitzone des Ortes, (Normalzeit)
+    A12 Position GK: Gauss Krüger Koordinaten oder UTM
+    A13 Messstelle : Messstellen-Nummer der Wasserstraßen- und
+                     Schifffahrtsverwaltung (WSV)
+    B01 Sommerzeit : wenn die Zeiten in Sommerzeit berechnet sind
+    C01 Analyse-Ber: Vorausberechnungsmethode:  selbständig oder im Anschluss
+                     + Anzahl der verwendeten Winkelgeschwindigkeiten
+    C03 Höhenniveau: die Höhen sind bezogen auf das Bezugsniveau
+                     NHN = Normalhöhennull  SKN = Seekartennull
+                     PNP = Pegelnullpunkt
+    C04 EinheitZeit: Maßeinheit der Zeiten                   [Stunden:Minuten]
+    C05 EinheitHöhe: Maßeinheit der Höhen                    [m  dm  cm  mm  ft]
+    D01 PNP u. NHN : Pegelnullpunkt unter Normalhöhennull
+                     (Stand: A07 Def.-Jahr)                  [m]
+    D02 SKN u. NHN : Seekartennull  unter Normalhöhennull    [m]
+    D03 SKN ü. PNP : Seekartennull  über  Pegelnullpunkt     [m]
+    F01 MHWI       : mittleres Hochwasserintervall           [Std:min]
+    F02 MNWI       : mittleres Niedrigwasserintervall        [Std:min]
+    G01 MHW        : mittleres Hochwasser                    [m]
+    G02 MNW        : mittleres Niedrigwasser                 [m]
+    LLL            : Leerzeile
+    #              : Spaltentrenner
+    EEE            : Ende eines Datensatzes
+
+********************************************************************************
+
+    Datenzeilen:
+    -------------
+       Spalte
+         1- 3  Zeilenkennung            VB1 = Daten ohne Höhen
+                                        VB2 = Daten mit Höhen
+         5-12  Pegelnummer                    Länderkennung + Nummer
+           14  Mondphasen                 0 = Neumond     1 = 1.Viertel
+                                          2 = Vollmond    3 = letztes Viertel
+           16  H = Hochwasserereignis     N = Niedrigwasserereignis
+               K = Punkt auf Kurve
+        18-19  Wochentag
+        21-30  Datum                          [Tag.Monat.Jahr]
+        32-36  Zeiten                         [Stunden:Minuten]
+        38-43  Höhen                          [m]
+           45  Qualitätswerte             1 = gestört (WSV)  7 = Ausreißer (BSH)
+        47-49  Tageszählung
+        51-56  Zeitzonenangabe       + 1:00 = UTC+1 (MEZ)  + 2:00 = UTC+2 (MESZ)
+        58-64  Transit-Nummer (für HW und NW)
+           69  1 = HW zu oberem Transit   2 = NW zu oberem Transit
+               3 = HW zu unterem Transit  4 = NW zu unterem Transit
+        71-84  Julianisches Datum [Tage], Zeitzone UTC
+
+********************************************************************************
+
+    Pegelnummerbeschreibung (BSH):
+    -------------------------------
+       Spalte
+         1- 2  Länderkennung
+            3  leeres Reservefeld  Unterstrich
+         4- 7  Ziffern       oder  Unterstrich
+            8  Buchstabe     oder  Unterstrich
+         9-12  Jahreszahl
+
+       DE__508P2018   NL__835_2018   FR__956a2018   GB_1121_2018   GB_1861a2018
+
+
+
+    Beispielzeilen:
+    ================
+
+I_E#DE__508P2019#
+A01#Hersteller :#M1103/BSH-Hamburg, 26.06.2018  09:59:01#
+A02#Daten-Art  :#Vorausberechnungen#
+A03#PegelNr.   :#DE__508P#
+A04#GT-Name    :#Hamburg, St. Pauli, Elbe#
+A06#GT-Jahr    :#      2019#
+A07#Def.-Jahr  :#2016#19#
+A08#Position   :#53°32'44''N   9°58'12''E WGS84#
+A11#Zeitzone   :#UTC+ 1h00min (MEZ)#
+A12#Position GK:# 35 64369.60 R  59 35349.57 H#
+A13#Messstelle :#304     #
+C01#Analyse-Ber:#selbständig#43#
+C02#Datenumfang:#Zeiten u. Höhen: HW NW      #
+C03#Höhenniveau:#PNP#
+C04#EinheitZeit:#StdMin#
+C05#EinheitHöhe:# m#
+D01#PNP u. NHN :#- 5.00 #
+D02#SKN u. NHN :#- 1.90 #
+D03#SKN ü. PNP :#  3.10 #
+F01#MHWI       :#15:22   #
+F02#MNWI       :#22:31   #
+G01#MHW        :#  7.12 #
+G02#MNW        :#  3.33 #
+LLL#
+         1         2         3         4         5         6         7         8
+123456789a123456789b123456789c123456789d123456789e123456789f123456789g123456789h12345
+
+VB2#DE__508P# #H#Di# 1. 1.2019# 0:00# 6.87 # #  1#+ 1:00#  24348#   1#2458484.458495#
+VB2#DE__508P# #N#Di# 1. 1.2019# 7:03# 3.65 # #  1#+ 1:00#  24348#   2#2458484.751963#
+VB2#DE__508P# #H#Di# 1. 1.2019#12:21# 7.18 # #  1#+ 1:00#  24348#   3#2458484.972882#
+VB2#DE__508P# #N#Di# 1. 1.2019#19:52# 3.55 # #  1#+ 1:00#  24348#   4#2458485.286364#
+VB2#DE__508P# #H#Mi# 2. 1.2019# 1:09# 6.94 # #  2#+ 1:00#  24349#   1#2458485.506404#
+VB2#DE__508P# #N#Mi# 2. 1.2019# 8:16# 3.67 # #  2#+ 1:00#  24349#   2#2458485.803083#
+VB2#DE__508P# #H#Mi# 2. 1.2019#13:33# 7.18 # #  2#+ 1:00#  24349#   3#2458486.023161#
+VB2#DE__508P# #N#Mi# 2. 1.2019#21:00# 3.60 # #  2#+ 1:00#  24349#   4#2458486.333625#
+VB2#DE__508P# #H#Do# 3. 1.2019# 2:15# 7.07 # #  3#+ 1:00#  24350#   1#2458486.552047#
+VB2#DE__508P# #N#Do# 3. 1.2019# 9:28# 3.67 # #  3#+ 1:00#  24350#   2#2458486.852503#
+VB2#DE__508P# #H#Do# 3. 1.2019#14:40# 7.20 # #  3#+ 1:00#  24350#   3#2458487.069239#
+VB2#DE__508P# #N#Do# 3. 1.2019#22:01# 3.61 # #  3#+ 1:00#  24350#   4#2458487.375526#
+VB2#DE__508P# #H#Fr# 4. 1.2019# 3:11# 7.17 # #  4#+ 1:00#  24351#   1#2458487.590879#
+.
+.
+VB2#DE__508P# #H#Sa#28.12.2019#18:02# 7.09 # #362#+ 1:00#  24697#   3#2458846.209959#
+VB2#DE__508P# #N#So#29.12.2019# 1:09# 3.50 # #363#+ 1:00#  24697#   4#2458846.506019#
+VB2#DE__508P# #H#So#29.12.2019# 6:12# 7.30 # #363#+ 1:00#  24698#   1#2458846.716883#
+VB2#DE__508P# #N#So#29.12.2019#13:39# 3.44 # #363#+ 1:00#  24698#   2#2458847.027426#
+VB2#DE__508P# #H#So#29.12.2019#18:42# 7.06 # #363#+ 1:00#  24698#   3#2458847.237466#
+VB2#DE__508P# #N#Mo#30.12.2019# 1:46# 3.54 # #364#+ 1:00#  24698#   4#2458847.531789#
+VB2#DE__508P# #H#Mo#30.12.2019# 6:50# 7.32 # #364#+ 1:00#  24699#   1#2458847.742762#
+VB2#DE__508P# #N#Mo#30.12.2019#14:19# 3.47 # #364#+ 1:00#  24699#   2#2458848.054674#
+VB2#DE__508P# #H#Mo#30.12.2019#19:21# 6.99 # #364#+ 1:00#  24699#   3#2458848.264506#
+VB2#DE__508P# #N#Di#31.12.2019# 2:21# 3.54 # #365#+ 1:00#  24699#   4#2458848.556464#
+VB2#DE__508P# #H#Di#31.12.2019# 7:27# 7.32 # #365#+ 1:00#  24700#   1#2458848.768621#
+VB2#DE__508P# #N#Di#31.12.2019#14:55# 3.50 # #365#+ 1:00#  24700#   2#2458849.079914#
+VB2#DE__508P# #H#Di#31.12.2019#19:57# 6.90 # #365#+ 1:00#  24700#   3#2458849.289523#
+EEE#
